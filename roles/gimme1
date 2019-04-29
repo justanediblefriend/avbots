@@ -1,0 +1,191 @@
+{void;{set;_location2;0} {if;{get;_cidne};includes;channel;;{foreach;~deepo1;_cho;{if;{get;~deepo1};==;{get;_cidne};{set;_channelcode;{get;_location2}};} {increment;_location2}}
+
+{set;_relevantroles;{join;{slice;{get;_ec};{get;_channelcode};{math;+;{get;_channelcode};1}};}}
+
+{if;{isarray;{get;_relevantroles}};==;true;{foreach;~rr;_relevantroles;{if;{userroles};includes;{get;~rr};{roleadd;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}{set;_xchk;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}ye;nu}};{if;{userroles};includes;{get;_relevantroles};{roleadd;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}{set;_xchk;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}ye;nu}}
+
+{if;{userhasrole;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}};==;false;{roleadd;{slice;{get;_croles};{get;_channelcode};{math;+;{get;_channelcode};1}}}{set;_xchk;{slice;{get;_croles};{get;_channelcode};{math;+;{get;_channelcode};1}}};}
+
+{rolesetname;{join;{slice;{get;_croles};{get;_channelcode};{math;+;1;{get;_channelcode}}}; };c:{randstr;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890;6}}
+
+{rolesetname;{join;{slice;{get;_altroles};{get;_channelcode};{math;+;1;{get;_channelcode}}}; };c:{randstr;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890;6}}}}
+
+{edit;563456911970926592;563502801234165762;;{embedbuild;
+title:Channel Roles;
+description:These are the roles for each channel.;
+fields.name:{channelname;<#563456084895858880>};
+fields.value:<#563456084895858880>
+{if;{isarray;{get;_nonmen}};==;true;{foreach;~nonmenr;_nonmen;{rolename;{get;~nonmenr};}{newline}};{rolename;{get;_nonmen}}{newline}}
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};0;1};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};0;1};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456120392515634>};
+fields.value:<#563456120392515634>
+{if;{isarray;{get;_poc}};==;true;{foreach;~pocr;_poc;{rolename;{get;~pocr};}{newline}};{rolename;{get;_poc}}{newline}}
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};1;2};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};1;2};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456163690315797>};
+fields.value:<#563456163690315797>
+{if;{isarray;{get;_dis}};==;true;{foreach;~disr;_dis;{rolename;{get;~disr};}{newline}};{rolename;{get;_dis}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};2;3};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};2;3};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456195738992650>};
+fields.value:<#563456195738992650>
+{if;{isarray;{get;_gsm}};==;true;{foreach;~gsmr;_gsm;{rolename;{get;~gsmr};}{newline}};{rolename;{get;_gsm}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};3;4};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};3;4};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456219428421662>};
+fields.value:<#563456219428421662>
+{if;{isarray;{get;_les}};==;true;{foreach;~lesr;_les;{rolename;{get;~lesr};}{newline}};{rolename;{get;_les}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};4;5};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};4;5};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456238583545869>};
+fields.value:<#563456238583545869>
+{if;{isarray;{get;_gay}};==;true;{foreach;~gayr;_gay;{rolename;{get;~gayr};}{newline}};{rolename;{get;_gay}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};5;6};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};5;6};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456260444389409>};
+fields.value:<#563456260444389409>
+{if;{isarray;{get;_bsx}};==;true;{foreach;~bsxr;_bsx;{rolename;{get;~bsxr};}{newline}};{rolename;{get;_bsx}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};6;7};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};6;7};}}.
+;
+fields.inline:true
+}}
+
+{edit;563456911970926592;563502825183772682;;{embedbuild;
+title:Channel Roles (cont.);
+description:These are the continued roles for each channel.;
+fields.name:{channelname;<#563456282212696077>};
+fields.value:<#563456282212696077>
+{if;{isarray;{get;_trn}};==;true;{foreach;~trnr;_trn;{rolename;{get;~trnr};}{newline}};{rolename;{get;_trn}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};7;8};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};7;8};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456304656547840>};
+fields.value:<#563456304656547840>
+{if;{isarray;{get;_ftm}};==;true;{foreach;~ftmr;_ftm;{rolename;{get;~ftmr};}{newline}};{rolename;{get;_ftm}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};8;9};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};8;9};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456335937536011>};
+fields.value:<#563456335937536011>
+{if;{isarray;{get;_mtf}};==;true;{foreach;~mtfr;_mtf;{rolename;{get;~mtfr};}{newline}};{rolename;{get;_mtf}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};9;10};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};9;10};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456361439166547>};
+fields.value:<#563456361439166547>
+{if;{isarray;{get;_asx}};==;true;{foreach;~asxr;_asx;{rolename;{get;~asxr};}{newline}};{rolename;{get;_asx}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};10;11};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};10;11};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456395496914945>};
+fields.value:<#563456395496914945>
+{if;{isarray;{get;_psx}};==;true;{foreach;~psxr;_psx;{rolename;{get;~psxr};}{newline}};{rolename;{get;_psx}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};11;12};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};11;12};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456421631492117>};
+fields.value:<#563456421631492117>
+{if;{isarray;{get;_nb}};==;true;{foreach;~nbr;_nb;{rolename;{get;~nbr};}{newline}};{rolename;{get;_nb}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};12;13};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};12;13};}}.
+;
+fields.inline:true;
+fields.name:{channelname;<#563456452476403712>};
+fields.value:<#563456452476403712>
+{if;{isarray;{get;_gndf}};==;true;{foreach;~gndfr;_gndfx;{rolename;{get;~gndfr};}{newline}};{rolename;{get;_gndf}}{newline}} 
+;
+fields.inline:true;
+fields.name:Roles;
+fields.value:__If they have any of those roles, then:__
+{rolemention;{join;{slice;{get;_altroles};13;14};}}.
+__If not, then:__
+{rolemention;{join;{slice;{get;_croles};13;14};}}.
+;
+fields.inline:true
+}}
+
+{if;{userhasrole;{get;_xchk}};==;true;Success! :thumbsup:;Error. Reported to <@167482529148960768>.}
