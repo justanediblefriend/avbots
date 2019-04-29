@@ -1,0 +1,6 @@
+{if;{channelid};==;563506633993617408;**channels**
+
+{foreach;~schannel;{channels;563455874404712461};{channelname;{get;~schannel}}{newline}}
+**roles**
+
+{set;~rtestcount;0}{foreach;~rtest;{roles};{if;{roleid;{get;~rtest}};==;563451978638688292;{void;{decrement;~rtestcount}};}{if;{get;~rtestcount};==;1;{rolename;{get;~rtest}}{newline};}{if;{roleid;{get;~rtest}};==;563451216655417347;{void;{increment;~rtestcount}};}};This command can only be done in <#563506633993617408>!}
