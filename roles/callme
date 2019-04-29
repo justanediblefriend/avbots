@@ -1,0 +1,5 @@
+{set;_wtg;{roleid;{args}}}
+
+{set;~rtestcount;0}{set;_doitcm;0}{foreach;~rtest;{roles};{if;{roleid;{get;~rtest}};==;563451978638688292;{void;{decrement;~rtestcount}};}{if;{get;~rtestcount};==;1;{if;{get;_wtg};==;{get;~rtest};{void;{increment;_doitcm}};};}{if;{roleid;{get;~rtest}};==;563451216655417347;{void;{increment;~rtestcount}};}}
+
+{if;{get;_doitcm};==;0;{delete}Whoops, looks like I can't add that role. Only God, in Her infinite wisdom, can tell us now. This command is beyond any mortal mind.;{execcc;callme1} {delete}}
