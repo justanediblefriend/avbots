@@ -1,0 +1,7 @@
+{set;_egganswers{userid};Okay.;Here are {usermention}'s answers.}
+{set;_egganswerids{userid};And now.;Here are {usermention}'s answers' IDs.;{messageid}}
+{set;_botslate{userid};Storing.;For purge.}
+{void;{push;{get;_botslate{userid}};{send;563509618710544445;Please answer the following seven questions as honestly and in as much detail as you are able to. Feel free to simply type `skip` if you can't think of anything to say.}}
+{set;_egg{userid};0}
+{push;{get;_botslate{userid}};{send;563509618710544445;{pop;{slice;{get;_eggquestions};{math;*;-1;{get;_egg{userid}}};{math;+;{math;*;-1;{get;_egg{userid}}};1}}}}}
+{decrement;_egg{userid}}}
