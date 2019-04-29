@@ -1,0 +1,63 @@
+{void;
+
+{//;natural logarithm function}
+{func;ln;{set;~x;{params;0}}{set;~n;1000000000}{math;*;{get;~n};{math;-;{math;^;{get;~x};{math;/;1;{get;~n}}};1}}}
+
+{//;variable for t: number of days user has been on the server}
+{set;_zht{userid};{math;/;{math;-;{time;x};{userjoinedat;x}};86400000}}
+
+{//;variable for m: total number of messages sent by user}
+{
+if;{math;*;-1;{get;_zhm{userid}}};<=;0;
+{increment;_zhm{userid}} {//;what to do if the user has sent messages before};
+{set;_zhm{userid};1} {//;what to do if the user hasn't sent messages before}
+}
+
+{//;variable for c: total number of characters sent by user}
+{set;_msgl;{length;{args}}}
+{
+if;{math;*;-1;{get;_zhc{userid}}};<=;0;
+{increment;_zhc{userid};{get;_msgl}} {//;what to do if the user has sent characters before};
+{set;_zhc{userid};{get;_msgl}} {//;what to do if the user hasn't sent characters before}
+}
+
+{//;variable for a: number of 15-minute intervals in which the user was active}
+{
+if;{math;*;-1;{get;_zha{userid}}};<=;0;
+{//;calculate if this user has been talking for 15 minutes}
+{if;{rounddown;{math;/;{math;-;{time;x};{get;_lastactive{userid}}};60000}};>=;15;
+{set;_zha{userid};{math;+;1;{get;_zha{userid}}}}{set;_lastactive{userid};{time;x}} {//;if the 15 minute session was over 15 minutes ago};
+{//;if the 15 minute session was under 15 minutes ago}}
+{//;what to do if 15-minute intervals have been measured before};
+{set;_zha{userid};1} {//;what to do if 15-minute intervals haven't been measured before}
+}
+
+{//;variable for p: penalty score}
+{
+if;{math;*;-1;{get;_zhp{userid}}};<=;0;
+{//;what to do if the user has a penalty score};
+{set;_zhp{userid};0} {//;what to do if the user doesn't have a penalty score}
+}
+
+{//;the score}
+{
+set;_qd{userid};{math;-;{math;*;
+{//;a}{get;_zha{userid}};
+{//;x}{math;+;10;{math;*;{func.ln;{math;+;1;{math;/;{get;_zhc{userid}};{math;+;{math;*;{get;_zhm{userid}};.9545};1}}}};2}};
+{//;y}{math;+;10;{math;^;{get;_zht{userid}};.5}}};
+{//;p}{get;_zhp{userid}}};
+{usermention}
+}
+
+}
+{//;This should make the questions in eggs work.}
+{if;{logic;&&;{bool;<=;{get;_egg{userid}};-1};{bool;>=;{get;_egg{userid}};{math;*;{length;{get;_eggquestions}};-1}}};==;true;
+{push;{get;_egganswers{userid}};Question {math;*;-1;{get;_egg{userid}}}: {args}}{push;{get;_egganswerids{userid}};{messageid}}
+{while;{length;{get;_botslate{userid}}};>;2;{delete;563509618710544445;{pop;{get;_botslate{userid}}}}}
+{push;{get;_botslate{userid}};{send;563509618710544445;{pop;{slice;{get;_eggquestions};{math;*;-1;{get;_egg{userid}}};{math;+;{math;*;-1;{get;_egg{userid}}};1}}}}}
+{void;{decrement;_egg{userid}}};
+}
+{//;iso-log}
+{if;{channelcategory};==;568300511858655232;
+	{void;{send;572412262606962717;{usermention} said in <#{channelid}>: {args}}};
+}
