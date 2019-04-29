@@ -1,0 +1,31 @@
+{delete}
+{//;Sets variable for targeted user (or just user if this isn't a mod), list of roles, and the number of iso roles.}
+{set;isosubject;{switch;{hasrole;563444908896026635};true;{userid;{args}};false;{userid}}}{set;_qte;{roles}}{set;_qtenum;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}
+{//;Sees if any iso roles are already owned. If so, remove them and stop the command.}
+{void;{while;{bool;{get;_qtenum};>;-1};==;true;
+	{if;{hasrole;{get;_qte;{math;+;{indexof;{roles};572038564624334848};{get;_qtenum}}};{get;isosubject}};==;true;
+		{if;{channelcategory};==;568300511858655232;
+			{removerole;{get;_qte;{math;+;{indexof;{roles};572038564624334848};{get;_qtenum}}};{get;isosubject}}
+			{return};
+			{send;{channelid};Looks like you're already in an iso channel. If you're trying to remove access, please type `!iso` in your iso channel.}
+			{return}
+		};
+		{decrement;_qtenum}
+	}
+}
+{set;_qtenum;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}
+{send;{channelid};Checking iso-channels for vacancy...}
+{//;Keep checking for an iso to give until all iso's are exhausted.}
+{//;First, make sure that we're checking only roles starting from --iso players--.}
+{while;{logic;||;{hasrole;{get;_qte;{math;+;1;{indexof;{roles};572038564624334848};{get;_qtenum}}};{get;isosubject}};{bool;{get;_qtenum};<;-1}};==;false;
+	{//;See if the role being checked is --iso players-- itself.}
+	{if;{get;_qtenum};<;0;
+		{//;If it is, everything is full. Let them know and end the command.}
+		{send;{channelid};All iso-channels are occuppied at the moment. Please be patient.}{return};
+		{//;Take how many members of each iso role there are. If 1, then say it's occuppied. If 0, then add the role. Either way, decrement.}
+		{switch;{length;{rolemembers;{get;_qte;{math;+;{indexof;{roles};572038564624334848};{get;_qtenum}}}}};
+		0;{addrole;{get;_qte;{math;+;{indexof;{roles};572038564624334848};{get;_qtenum}}};{get;isosubject}}
+		{send;{channelid};Attempted to give access to iso-{get;_qtenum}. I'm too lazy to code in a checker to see if it was successful so you'll have to check yourself.};
+		1;{send;{channelid};iso-{get;_qtenum} is occuppied.}}{decrement;_qtenum}
+	}
+}}
