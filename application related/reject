@@ -1,0 +1,3 @@
+{set;_hatchingpokemon;{userid;{args}}}
+{while;{length;{get;_egganswers{get;_hatchingpokemon}}};>;0;{send;563463344183574549;{shift;{get;_egganswers{get;_hatchingpokemon}}}}}
+{while;{length;{get;_egganswerids{get;_hatchingpokemon}}};>;2;{delete;563509618710544445;{pop;{get;_egganswerids{get;_hatchingpokemon}}}}}
