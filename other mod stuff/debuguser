@@ -1,0 +1,18 @@
+{set;_targetuser;{userid;{args}}}{func;ln;{set;~x;{params;0}}{set;~n;1000000000}{math;*;{get;~n};{math;-;{math;^;{get;~x};{math;/;1;{get;~n}}};1}}}
+**user score:** {get;_qd{get;_targetuser}}
+
+**number of 15-minute intervals in which the user was active:** {get;_zha{get;_targetuser}}
+**time since last 15-minute interval started:** {rounddown;{math;/;{math;-;{time;x};{get;_lastactive{get;_targetuser}}};60000}}
+**total number of characters sent by user:** {get;_zhc{get;_targetuser}}
+**total number of messages sent by user:** {get;_zhm{get;_targetuser}}
+**number of days user has been on the server:** {get;_zht{get;_targetuser}}
+**penalty score:** {get;_zhp{get;_targetuser}}
+
+**formula should be:** `{get;_zha{get;_targetuser}} * (10 + 2log(1 + {get;_zhc{get;_targetuser}}/({get;_zhm{get;_targetuser}}*.9545+1))) * (10 + sqrt({get;_zht{get;_targetuser}})) - {get;_zhp{get;_targetuser}}`
+
+**just x:** {math;+;10;{math;*;{func.ln;{math;+;1;{math;/;{get;_zhc{get;_targetuser}};{math;+;{math;*;{get;_zhm{get;_targetuser}};.9545};1}}}};2}}
+**just x should be:** `(10 + 2log(1 + {get;_zhc{get;_targetuser}}/({get;_zhm{get;_targetuser}}*.9545+1)))`
+**just `2log(1 + {get;_zhc{get;_targetuser}}/({get;_zhm{get;_targetuser}}*.9545+1))`:** {math;*;{func.ln;{math;+;1;{math;/;{get;_zhc{get;_targetuser}};{math;+;{math;*;{get;_zhm{get;_targetuser}};.9545};1}}}};2}
+
+**just y:** {math;+;10;{math;^;{get;_zht{get;_targetuser}};.5}}
+**just y should be:** `(10 + sqrt({get;_zht{get;_targetuser}}))`
