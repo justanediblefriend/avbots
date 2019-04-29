@@ -1,0 +1,13 @@
+{set;_timeprompt;{userid;{args}}}
+{set;_spring;{if;{math;%;{math;-;{time;WW};11};54};<;34;3600;0}}
+{time;HH:mm;
+	{math;+;
+		{math;-;{time;X};{get;_ctime{get;_timeprompt}}};
+		{get;_time{get;_timeprompt}};
+		{math;*;{get;_spring};{get;_dstq{get;_timeprompt}}};
+		{math;*;{get;_cdst{get;_timeprompt}};{get;_dstq{get;_timeprompt}}}
+	}
+;X}
+
+week 11 spring forward
+week 45 fall back
