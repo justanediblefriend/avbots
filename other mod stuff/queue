@@ -1,0 +1,15 @@
+{set;_birdqueue;always;here}
+
+{foreach;~hatchedbird;{rolemembers;563441591746822165};
+
+{if;{userhasrole;563441952238993460;{get;~hatchedbird}};==;true;
+;
+{push;{get;_birdqueue};{get;_qd{get;~hatchedbird}}}}
+
+}
+
+{sort;{get;_birdqueue};descending}
+
+__Consider `!bird`ing the following people:__
+
+{repeat;{set;cpbq;{shift;{get;_birdqueue}}}{set;cpbq2;{pop;{get;cpbq}}}{usermention;{get;cpbq2}} (i.e. {usernick;{get;cpbq2}}): {pop;{get;cpbq}}{newline};{if;{math;*;-1;{args}};<=;0;{min;{args};50};20}}
