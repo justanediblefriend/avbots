@@ -1,0 +1,4 @@
+{set;_time{userid};{time;X;{args;0;1};HH:mm}}
+{if;{args;1;n};==;DST;{set;_dstq{userid};1};{set;_dstq{userid};0}}
+{set;_ctime{userid};{time;X}}
+{set;_cdst{userid};{if;{math;%;{math;-;{time;WW};11};54};<;34;-3600;0}}
