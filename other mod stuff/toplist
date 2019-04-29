@@ -1,0 +1,13 @@
+{set;_birdedqueue;always;here}
+
+{foreach;~grownbird;{guildmembers};
+
+{push;{get;_birdedqueue};{get;_qd{get;~grownbird}}}
+
+}
+
+{sort;{get;_birdedqueue};descending}
+
+__Here is roughly everyone by activity level:__
+
+{repeat;{set;cmbq;{shift;{get;_birdedqueue}}}{set;cmbq2;{pop;{get;cmbq}}}{usermention;{get;cmbq2}} (i.e. {usernick;{get;cmbq2}}): {pop;{get;cmbq}}{newline};{if;{math;*;-1;{args}};<=;0;{args};20}}
