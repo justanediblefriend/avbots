@@ -29,3 +29,5 @@ gimme1 - Part 1 of adding a channel role.
 cr - Reveals all roles to be provided.
 
 iso - Gives iso access.
+
+!iso - Will make Echo delete everything in an iso channel.
