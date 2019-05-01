@@ -1,4 +1,5 @@
 {set;_hatchingpokemon;{userid;{args}}}
 {roleadd;563441591746822165;{get;_hatchingpokemon}}
+{roleremove;572987449198772244;{get;_hatchingpokemon}}
 {while;{length;{get;_egganswers{get;_hatchingpokemon}}};>;0;{send;563463344183574549;{shift;{get;_egganswers{get;_hatchingpokemon}}}}}
 {while;{length;{get;_egganswerids{get;_hatchingpokemon}}};>;2;{delete;563509618710544445;{pop;{get;_egganswerids{get;_hatchingpokemon}}}}}

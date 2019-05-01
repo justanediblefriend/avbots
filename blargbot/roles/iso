@@ -1,4 +1,4 @@
-{delete}
+!cc set iso {delete}
 {//;Sets variable for targeted user (or just user if this isn't a mod), list of roles, and the number of iso roles.}
 {set;isosubject;{switch;{hasrole;563444908896026635};true;{userid;{args}};false;{userid}}}{set;_qte;{roles}}{set;_qtenum;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}
 {//;Sees if any iso roles are already owned. If so, remove them and stop the command.}
@@ -29,3 +29,19 @@
 		1;{send;{channelid};iso-{get;_qtenum} is occuppied.}}{decrement;_qtenum}
 	}
 }}
+
+
+
+
+
+
+{//;Adds 
+{roleadd;{get;_qte;{math;+;{indexof;{roles};572038564624334848};{get;_playersin}}};{get;isosubject}}
+
+{if;{hasrole;{get;_qte;{math;+;{indexof;{roles};572038564624334848};{get;_playersin}}};{get;isosubject}};==;true;
+
+{set;_po{get;_playersin};1}
+
+{void;{increment;_playersin}};
+
+{repeat;;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}

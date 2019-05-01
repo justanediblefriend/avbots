@@ -1,0 +1,18 @@
+_autoresponse_6
+
+	a * (10 + 2 * log(1 + c/(m*.9545+1))) * (10 + sqrt(t)) - p
+	a * x * y - p
+
+	a: number of 15-minute intervals in which the user was active
+	c: total number of characters sent by user
+	m: total number of messages sent by user
+	t: number of days user has been on the server
+	p: penalty score
+
+	_birdqueue
+
+(m)time
+
+	week 11 spring forward
+	week 45 fall back
+

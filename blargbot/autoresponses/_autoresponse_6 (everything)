@@ -51,7 +51,8 @@ set;_qd{userid};{math;-;{math;*;
 
 }
 {//;This should make the questions in eggs work.}
-{if;{logic;&&;{bool;<=;{get;_egg{userid}};-1};{bool;>=;{get;_egg{userid}};{math;*;{length;{get;_eggquestions}};-1}}};==;true;
+{//;If the questions started and there are more to come, throw in another question once they speak.}
+{if;{logic;&&;{bool;<=;{get;_egg{userid}};-1};{bool;>=;{get;_egg{userid}};{math;*;{length;{get;_eggquestions}};-1}};{bool;!=;!law;{args}}};==;true;
 {push;{get;_egganswers{userid}};Question {math;*;-1;{get;_egg{userid}}}: {args}}{push;{get;_egganswerids{userid}};{messageid}}
 {while;{length;{get;_botslate{userid}}};>;2;{delete;563509618710544445;{pop;{get;_botslate{userid}}}}}
 {push;{get;_botslate{userid}};{send;563509618710544445;{pop;{slice;{get;_eggquestions};{math;*;-1;{get;_egg{userid}}};{math;+;{math;*;-1;{get;_egg{userid}}};1}}}}}
@@ -59,5 +60,5 @@ set;_qd{userid};{math;-;{math;*;
 }
 {//;iso-log}
 {if;{channelcategory};==;568300511858655232;
-	{void;{send;572412262606962717;{usermention} said in <#{channelid}>: {args}}};
+	{void;{send;572412262606962717;{usermention} said in <#{channelid}>: {args}{newline}{pop;{messageattachments}}}};
 }

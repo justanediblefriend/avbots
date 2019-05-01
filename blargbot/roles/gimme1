@@ -1,24 +1,14 @@
-{void;{set;_location;0} {set;_location1;0}
-{set;_rolecode;ignore;this}
-{set;_namecode;ignore;this}
-{foreach;~deep;_ec;{if;{get;~deep};includes;{get;_wtg};{push;{get;_rolecode};1};{push;{get;_rolecode};0}}}
-{shift;{get;_rolecode}}
-{shift;{get;_rolecode}}
-{//;For this part, 1 means that category does include the role the user entered, and 0 means it does not.}
-{foreach;~medium;_rolecode;{if;{get;~medium};==;1;
-{//;If the user has the private version of the role attached to the identity, a 1 is given to _namecode. Otherwise, a 0 is given.}
-{if;{userhasrole;{slice;{get;_croles};{get;_location};{math;+;1;{get;_location}}}};==;true;{push;{get;_namecode};1}{increment;_location};{push;{get;_namecode};0}{increment;_location}};
-{push;{get;_namecode};0}{increment;_location}}}
-{//;Here, if it's a 1, it should remove the corresponding role in _croles and add the corresponding role in _altroles.}
-{shift;{get;_namecode}}
-{shift;{get;_namecode}}
-{foreach;~shallow;_namecode;{if;{get;~shallow};==;1;
-{roleremove;{slice;{get;_croles};{get;_location1};{math;+;1;{get;_location1}}}}
-{rolesetname;{join;{slice;{get;_croles};{get;_location1};{math;+;1;{get;_location1}}}; };c:{randstr;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890;6}}
-{roleadd;{slice;{get;_altroles};{get;_location1};{math;+;1;{get;_location1}}}}
-{rolesetname;{join;{slice;{get;_altroles};{get;_location1};{math;+;1;{get;_location1}}}; };c:{randstr;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890;6}}
-{increment;_location1};{increment;_location1}}}
-{roleadd;{get;_wtg}}}
+{void;{set;_location2;0} {if;{get;_cidne};includes;channel;;{foreach;~deepo1;_cho;{if;{get;~deepo1};==;{get;_cidne};{set;_channelcode;{get;_location2}};} {increment;_location2}}
+
+{set;_relevantroles;{join;{slice;{get;_ec};{get;_channelcode};{math;+;{get;_channelcode};1}};}}
+
+{if;{isarray;{get;_relevantroles}};==;true;{foreach;~rr;_relevantroles;{if;{userroles};includes;{get;~rr};{roleadd;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}{set;_xchk;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}ye;nu}};{if;{userroles};includes;{get;_relevantroles};{roleadd;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}{set;_xchk;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}}ye;nu}}
+
+{if;{userhasrole;{slice;{get;_altroles};{get;_channelcode};{math;+;{get;_channelcode};1}}};==;false;{roleadd;{slice;{get;_croles};{get;_channelcode};{math;+;{get;_channelcode};1}}}{set;_xchk;{slice;{get;_croles};{get;_channelcode};{math;+;{get;_channelcode};1}}};}
+
+{rolesetname;{join;{slice;{get;_croles};{get;_channelcode};{math;+;1;{get;_channelcode}}}; };c:{randstr;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890;6}}
+
+{rolesetname;{join;{slice;{get;_altroles};{get;_channelcode};{math;+;1;{get;_channelcode}}}; };c:{randstr;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890;6}}}}
 
 {edit;563456911970926592;563502801234165762;;{embedbuild;
 title:Channel Roles;
@@ -198,4 +188,4 @@ __If not, then:__
 fields.inline:true
 }}
 
-{if;{userhasrole;{get;_wtg}};==;true;Success! :thumbsup:;Error. Reported to <@167482529148960768>.}
+{if;{userhasrole;{get;_xchk}};==;true;Success! :thumbsup:;Error. Reported to <@167482529148960768>.}

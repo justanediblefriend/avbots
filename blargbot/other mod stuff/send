@@ -1,0 +1,16 @@
+{set;_rsbj;{send;{channelid};Are you sure you want to send "{args;1;n}" to channel {channelname;{args;0}}? You have 30 seconds to answer (and this will take 30 seconds). (y/n)}}
+{set;_goober;
+	{waitmessage;
+		;
+		;
+		{bool;{messagetext};==;y};
+		30
+	}
+}
+{timer;
+	{if;{shift;{get;_goober}};==;{channelid};
+		{send;{args;0};{args;1;n}};
+		{send;{channelid};Send cancelled.}
+	};
+	30s
+}
