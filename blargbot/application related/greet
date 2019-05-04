@@ -1,3 +1,3 @@
 {set;_egganswerids{userid};And now.;Here are {usermention}'s answers' IDs.}{push;{get;_egganswerids{userid}};{send;563509618710544445;Heya {usermention}, thanks for checking us out. When you're ready, type `!apply`.
 
-If that doesn't work or if you want to answer our questions in private, type `.apply` or `/apply` instead. Warning: this method is a bit more buggy!}} --channel #eggs
+If that doesn't work or if you want to answer our questions in private, type `.apply` or `/apply` instead. Warning: this method is a bit more buggy!}}{void;{addrole;563450994923536385}} --channel #eggs
