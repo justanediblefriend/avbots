@@ -1,0 +1,3 @@
++auto &{:}(....)={init}
+:break unless channel.id=579261555170869248
+{sleep:259200s}{del}
