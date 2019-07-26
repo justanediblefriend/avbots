@@ -1,0 +1,5 @@
+{foreach;~vchk;_ventd;
+	{if;{math;-;{time;x};{pop;{get;~vchk}}};>=;86400000;
+		{delete;579261555170869248;{pop;{get;~vchk}}};
+	}
+}
