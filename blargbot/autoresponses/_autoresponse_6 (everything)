@@ -62,3 +62,6 @@ set;_qd{userid};{math;-;{math;*;
 {if;{channelcategory};==;568300511858655232;
 	{void;{send;572412262606962717;{usermention} said in <#{channelid}>: {args}{newline}{pop;{messageattachments}}}};
 }
+{if;{channelid};==;579261555170869248;
+	{push;{get;_ventd};{concat;{messageid};{time;x}}}
+}
