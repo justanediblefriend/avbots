@@ -1,5 +1,8 @@
 {foreach;~vchk;_ventd;
 	{if;{math;-;{time;x};{pop;{get;~vchk}}};>=;86400000;
-		{delete;579261555170869248;{pop;{get;~vchk}}};
+		{delete;579261555170869248;{shift;{get;~vchk}}}
+		{if;{get;_delco};>=;3;{increment;_delco};{set;_delco;3}}
+		;
 	}
 }
+{if;{get;_delco};>=;3;{splice;{get;_ventd};3;{get;_delco}}{set;_delco;0};}
