@@ -10,6 +10,6 @@
 
 {sort;{get;_birdqueue};descending}
 
-__Consider `!bird`ing the following people:__
+__Consider `!birb`ing the following people:__
 
 {repeat;{set;cpbq;{shift;{get;_birdqueue}}}{set;cpbq2;{pop;{get;cpbq}}}{usermention;{get;cpbq2}} (i.e. {usernick;{get;cpbq2}}): {pop;{get;cpbq}}{newline};{if;{math;*;-1;{args}};<=;0;{min;{args};50};20}}

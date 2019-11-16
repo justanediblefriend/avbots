@@ -1,0 +1,18 @@
+{//;Send the confirmation message}
+{void;{send;{channelid};This will give you a role which will allow you to react to messages in <#563455744716832768> and <#563579294912086036>. This is just for the purposes of managing messages. Please say "Agreed" if you agree and "Disagreed" if you disagree.}}
+
+{//;If {waitmessage} returns true, store the ID for later, or wait for another of the expected answers to match until timeout.}
+{set;~MsgID;
+  {waitmessage;{channelid};{userid};
+    {switch;{messagetext}; {//;<- Check if the answer matches or not}
+["Agreed", "Disagreed"];true {//;<- Expected answers}
+    ;false} {//;<- Wait for another answer}
+  }
+}
+
+{//;Get the answer's content from the ~MsgID array}
+{switch;{messagetext;{get;~MsgID;1}};Agreed;
+{switch;{hasrole;640962475944050688};false;{roleadd;640962475944050688};true;{roleremove;640962475944050688}}
+;Disagreed;
+Disagreement noted.
+;I didn't notice you say anything, {usermention}. I hope I wasn't abandoned.}  {//;<- {waitmessage} timed out, no answers matched}
