@@ -1,4 +1,4 @@
-!cc set iso {delete}
+! cc set iso {delete}
 {//;Sets variable for targeted user (or just user if this isn't a mod), list of roles, and the number of iso roles.}
 {set;isosubject;{switch;{hasrole;563444908896026635};true;{userid;{args}};false;{userid}}}{set;_qte;{roles}}{set;_qtenum;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}
 {//;Sees if any iso roles are already owned. If so, remove them and stop the command.}
@@ -44,4 +44,4 @@
 
 {void;{increment;_playersin}};
 
-{repeat;;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}
+{repeat;;{math;-;{indexof;{roles};572056761654181908};{indexof;{roles};572038564624334848};1}}}}
